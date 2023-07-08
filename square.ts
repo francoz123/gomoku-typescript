@@ -1,3 +1,4 @@
+import GameTurn from "./gameturn"
 import Piece, { PLAYER } from "./piece"
 
 enum STATUS{
@@ -21,10 +22,10 @@ export default class Square{
         return this.element
     }
 
-    handleClick(){
+    handleClick(gameTurn: GameTurn){
         if (this.status === STATUS.OCCUPIED) return
         this.status = STATUS.OCCUPIED
-        this.element.appendChild(new Piece(this.id, PLAYER.BLACK).getElement)
+        this.element.appendChild(new Piece(this.id, gameTurn).getElement)
     }
 
     get isOccupied(){
