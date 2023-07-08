@@ -10,10 +10,11 @@ export default class Square{
     id: number
     status: STATUS
     element: HTMLDivElement
-
-    constructor(id: number) {
+    turn: GameTurn
+    constructor(id: number, gameTurn: GameTurn) {
         this.id = id
         this.status = STATUS.EMPTY
+        this.turn = gameTurn
         this.element = document.createElement('div')
         this.element.classList.add('square')
     }
