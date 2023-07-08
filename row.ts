@@ -5,7 +5,7 @@ export default class Row {
     squares: Square[]
     element: HTMLDivElement
   
-    constructor(id: number, numberOfSquares: number, occupiedSquares: number[] = []) {
+    constructor(id: number, numberOfSquares: number = 5, occupiedSquares: number[] = []) {
       this.id = id
       this.squares = Array.from({ length:  numberOfSquares}).map((_, index) => {
         const squareId = numberOfSquares * id + index
