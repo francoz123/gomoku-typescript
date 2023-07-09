@@ -1,10 +1,16 @@
+import GameTurn from "./gameturn";
 import Row from "./row";
+import Square from "./square";
 
-export default class board{
-    id: number
+export default class Board{
     rows: Row[]
-     constructor(id: number, size: number){
-        this.id = id
-        this.rows = Array.from({length: size})
-     }
+    element: HTMLDivElement
+    constructor(size: number, gameTurn: GameTurn){
+        this.rows = Array.from({length: size}).map((_, index) => {
+            return new Row(index, gameTurn, size)
+        })
+        this.element = document.createElement('div')
+        this.element.classList.add('board')
+        this.element.append(...this.rows.map((row) => row.element))
+    }
 }
