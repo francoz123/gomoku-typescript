@@ -24,7 +24,7 @@ export default class Square{
         this.element = document.createElement('div')
         this.element.classList.add('square')
         this.element.addEventListener('click', () => {
-            this.handleClick(game)
+            this.handleClick(this.game)
         })
     }
 
@@ -33,11 +33,22 @@ export default class Square{
     }
 
     handleClick(game: Game){
+        if(game.gameOver) return
         if (this.isOccupied) return
         this.status = STATUS.OCCUPIED
         this.piece = new Piece(this.id, game)
         this.element.appendChild(this.piece.getElement)
-        //alert(this.rowNunber + " " + this.piece.id)
+        let count = this.game.countConnectedPieces(this.rowNunber, this.id)
+        game.checkBoard()
+        if (count == 5) {
+            game.nextTurn()
+            const info = document.getElementById('info')
+            info?.textContent? info.textContent = game.turn + " wins" : " "
+        }else if(game.gameOver){
+            game.nextTurn()
+            const info = document.getElementById('info')
+            info?.textContent? info.textContent = "Draw" : " "
+        }
     }
 
     get isOccupied(){

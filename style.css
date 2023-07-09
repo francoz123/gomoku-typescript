@@ -62,3 +62,32 @@ justify-content: center;
     z-index: 100;
     /* background-color: brown; */
   }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20;
+    font-weight: bold;
+  }
+
+  #form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  #start-button {
+    font-weight: bold;
+  }
