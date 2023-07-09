@@ -1,3 +1,4 @@
+import Game from "./game";
 import GameTurn from "./gameturn";
 import Square from "./square";
 
@@ -5,13 +6,13 @@ export default class Row {
     id: number
     squares: Square[]
     element: HTMLDivElement
-    gameTurn: GameTurn
-    constructor(id: number, gameTurn: GameTurn, numberOfSquares: number = 5, occupiedSquares: number[] = []) {
+    game: Game
+    constructor(id: number, game: Game, numberOfSquares: number = 5, occupiedSquares: number[] = []) {
       this.id = id
-      this.gameTurn = gameTurn
+      this.game = game
       this.squares = Array.from({ length:  numberOfSquares}).map((_, index) => {
-        const squareId = numberOfSquares * id + index
-        return new Square(squareId, gameTurn)
+        const squareId = index
+        return new Square(squareId, id, game)
       })
       this.element = document.createElement('div')
       this.element.classList.add('row')

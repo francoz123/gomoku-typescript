@@ -1,3 +1,4 @@
+import Game from "./game"
 import GameTurn from "./gameturn"
 import Piece, { PLAYER } from "./piece"
 
@@ -6,18 +7,24 @@ enum STATUS{
     EMPTY = 'EMPTY'
 }
 
+type playerPiece = Piece | null
+
 export default class Square{
     id: number
+    rowNunber: number
     status: STATUS = STATUS.EMPTY
     element: HTMLDivElement
-    turn: GameTurn
-    constructor(id: number, gameTurn: GameTurn) {
+    game: Game
+    piece: playerPiece = null
+
+    constructor(id: number, rowNumber: number, game: Game) {
         this.id = id
-        this.turn = gameTurn
+        this.rowNunber =rowNumber
+        this.game = game
         this.element = document.createElement('div')
         this.element.classList.add('square')
         this.element.addEventListener('click', () => {
-            this.handleClick(gameTurn)
+            this.handleClick(game)
         })
     }
 
@@ -25,10 +32,12 @@ export default class Square{
         return this.element
     }
 
-    handleClick(gameTurn: GameTurn){
+    handleClick(game: Game){
         if (this.isOccupied) return
         this.status = STATUS.OCCUPIED
-        this.element.appendChild(new Piece(this.id, gameTurn).element)
+        this.piece = new Piece(this.id, game)
+        this.element.appendChild(this.piece.getElement)
+        //alert(this.rowNunber + " " + this.piece.id)
     }
 
     get isOccupied(){
