@@ -8,15 +8,17 @@ enum STATUS{
 
 export default class Square{
     id: number
-    status: STATUS
+    status: STATUS = STATUS.EMPTY
     element: HTMLDivElement
     turn: GameTurn
     constructor(id: number, gameTurn: GameTurn) {
         this.id = id
-        this.status = STATUS.EMPTY
         this.turn = gameTurn
         this.element = document.createElement('div')
         this.element.classList.add('square')
+        this.element.addEventListener('click', () => {
+            this.handleClick(gameTurn)
+        })
     }
 
     get getElement(){
@@ -24,9 +26,9 @@ export default class Square{
     }
 
     handleClick(gameTurn: GameTurn){
-        if (this.status === STATUS.OCCUPIED) return
+        if (this.isOccupied) return
         this.status = STATUS.OCCUPIED
-        this.element.appendChild(new Piece(this.id, gameTurn).getElement)
+        this.element.appendChild(new Piece(this.id, gameTurn).element)
     }
 
     get isOccupied(){
