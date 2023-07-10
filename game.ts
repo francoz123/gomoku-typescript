@@ -47,6 +47,7 @@ export default class Game{
                 }
             }
             this.gameOver = false
+            p.textContent = this.turn + " to play"
         })
 
         info.append(p)

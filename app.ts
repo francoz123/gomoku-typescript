@@ -1,5 +1,4 @@
 import Game from "./game"
-import GameTurn from "./gameturn"
 import { PLAYER } from "./piece"
 
 document.getElementById('start-button')?.addEventListener('click', () => {

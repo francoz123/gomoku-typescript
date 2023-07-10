@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start:server": "npx ts-node server.ts",
     "start": "parcel index.html"
   },
   "dependencies": {
