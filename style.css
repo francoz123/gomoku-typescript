@@ -65,7 +65,7 @@ justify-content: center;
 
   .info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20;
@@ -90,4 +90,8 @@ justify-content: center;
 
   #start-button {
     font-weight: bold;
+  }
+  #reset-button {
+    font-weight: bold;
+    display: flex;
   }

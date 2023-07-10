@@ -27,7 +27,31 @@ export default class Game{
         const info = document.createElement('div')
         info.classList.add('info')
         info.id = "info"
-        info.textContent = this.turn + " to play"
+
+        const p = document.createElement('p')
+        p.id = 'message'
+        p.textContent = this.turn + " to play"
+
+        const resetButton = document.createElement('button')
+        resetButton.textContent = "Reset"
+
+        resetButton.addEventListener('click', () => {
+            const rows = this.board.rows
+            for (let i=0; i<this.boardSize; i++) {
+                for (let j=0; j<this.boardSize; j++) {
+                    const square = rows[i].squares[j]
+                    if (square.isOccupied) {
+                        square.getElement.firstChild?.remove()
+                        square.setStatus(0)
+                    }
+                }
+            }
+            this.gameOver = false
+        })
+
+        info.append(p)
+        info.append(resetButton)
+
         container?.append(info)
     }
 

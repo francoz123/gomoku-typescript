@@ -17,8 +17,8 @@ export default class Piece{
         this.element = document.createElement('div')
         this.element.classList.add('piece')
         this.element.classList.add(game.turn == PLAYER.BLACK ? 'black' : 'white')
-        if (!game.gameOver) game.nextTurn()
-        const info = document.getElementById('info')
+        game.nextTurn()
+        const info = document.getElementById('message')
         info?.textContent? info.textContent = game.turn + " to play" : " "
     }
 

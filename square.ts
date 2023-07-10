@@ -36,19 +36,22 @@ export default class Square{
         if(game.gameOver) return
         if (this.isOccupied) return
         this.status = STATUS.OCCUPIED
+        const currentTurn = game.turn
         this.piece = new Piece(this.id, game)
         this.element.appendChild(this.piece.getElement)
         let count = this.game.countConnectedPieces(this.rowNunber, this.id)
         game.checkBoard()
         if (count == 5) {
-            game.nextTurn()
-            const info = document.getElementById('info')
-            info?.textContent? info.textContent = game.turn + " wins" : " "
+            const info = document.getElementById('message')
+            info?.textContent? info.textContent = currentTurn + " wins" : " "
         }else if(game.gameOver){
-            game.nextTurn()
-            const info = document.getElementById('info')
+            const info = document.getElementById('message')
             info?.textContent? info.textContent = "Draw" : " "
         }
+    }
+
+    setStatus(value: number){
+        this.status = value == 0 ? STATUS.EMPTY : STATUS.OCCUPIED
     }
 
     get isOccupied(){
