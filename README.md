@@ -7,12 +7,8 @@
 ```bash
 yarn
 ```
-3. Start the server: 
-```bash 
-yarn start:server
-``` 
-4. Launch game: `yarn start`
+3. Launch game:
 ```bash 
 yarn start
 ``` 
-5. Go to http://localhost:1234
+4. Go to [localhost:1234](http://localhost:1234)

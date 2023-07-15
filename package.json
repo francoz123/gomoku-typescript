@@ -1,14 +1,14 @@
 {
   "name": "gomoku-typescript",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start:server": "npx ts-node server.ts",
     "start": "parcel index.html"
   },
   "dependencies": {
     "parcel": "^2.9.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "repository": "https://github.com/francoz123/gomoku-typescript.git",
