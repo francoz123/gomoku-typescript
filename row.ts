@@ -1,13 +1,23 @@
 import Game from "./game";
-import GameTurn from "./gameturn";
 import Square from "./square";
 
+/**
+ * Models a row of suares on the board
+ */
 export default class Row {
     id: number
     squares: Square[]
     element: HTMLDivElement
     game: Game
-    constructor(id: number, game: Game, numberOfSquares: number = 5, occupiedSquares: number[] = []) {
+
+    /**
+     * Constructo to initialize id and create squares
+     * @param id 
+     * @param game 
+     * @param numberOfSquares 
+     * @param occupiedSquares 
+     */
+    constructor(id: number, game: Game, numberOfSquares: number = 5) {
       this.id = id
       this.game = game
       this.squares = Array.from({ length:  numberOfSquares}).map((_, index) => {
